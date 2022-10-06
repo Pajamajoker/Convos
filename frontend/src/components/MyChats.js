@@ -1,9 +1,12 @@
+import { AddIcon } from "@chakra-ui/icons";
 import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getSender } from "../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
+import GroupChatModal from "./miscellaneous/GroupChatModal";
+import { Button } from "@chakra-ui/react";
 
 const MyChats = ({
   user,
@@ -33,7 +36,7 @@ const MyChats = ({
         title: "Error Occured!",
         description: "Failed to Load the chats",
         status: "error",
-        duration: 9000,
+        duration: 5000,
         isClosable: true,
         position: "bottom-left",
       });
@@ -59,10 +62,24 @@ const MyChats = ({
     >
       <Text
         pb={3}
-        fontSize={{ base: "25px", md: "30px" }}
+        px={3}
+        fontSize={{ base: "28px", md: "30px" }}
         fontFamily="Work sans"
+        d="flex"
+        w="100%"
+        justifyContent="space-between"
+        alignItems="center"
       >
         My Chats
+        <GroupChatModal user={user} chats={chats} setChats={setChats}>
+          <Button
+            d="flex"
+            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+            rightIcon={<AddIcon />}
+          >
+            New Group Chat
+          </Button>
+        </GroupChatModal>
       </Text>
       <Box
         d="flex"

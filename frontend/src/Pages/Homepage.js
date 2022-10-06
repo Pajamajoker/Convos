@@ -10,8 +10,8 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
-import Login from "../components/Login";
-import Signup from "../components/Signup";
+import Login from "../components/Authentication/Login";
+import Signup from "../components/Authentication/Signup";
 
 function Homepage() {
   const history = useHistory();
@@ -35,7 +35,7 @@ function Homepage() {
         borderWidth="1px"
       >
         <Text fontSize="4xl" fontFamily="Work sans">
-          MERN CHAT APP
+          Talk-A-Tive
         </Text>
       </Box>
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">

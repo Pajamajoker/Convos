@@ -4,15 +4,15 @@ import { useEffect } from "react";
 import { useHistory } from "react-router";
 import Chatbox from "../components/Chatbox";
 import MyChats from "../components/MyChats";
-import SideDrawer from "../components/SideDrawer";
+import SideDrawer from "../components/miscellaneous/SideDrawer";
 
 const Chatpage = () => {
   const history = useHistory();
   const [user, setUser] = useState();
   const [chats, setChats] = useState();
   const [fetchAgain, setFetchAgain] = useState(false);
-
   const [selectedChat, setSelectedChat] = useState();
+  const [notification, setNotification] = useState([]);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -30,6 +30,8 @@ const Chatpage = () => {
           setSelectedChat={setSelectedChat}
           setChats={setChats}
           chats={chats}
+          notification={notification}
+          setNotification={setNotification}
         />
       )}
       <Box d="flex" justifyContent="space-between" w="100%" h="91.5vh" p="10px">
@@ -50,6 +52,8 @@ const Chatpage = () => {
             user={user}
             fetchAgain={fetchAgain}
             setFetchAgain={setFetchAgain}
+            notification={notification}
+            setNotification={setNotification}
           />
         )}
       </Box>
